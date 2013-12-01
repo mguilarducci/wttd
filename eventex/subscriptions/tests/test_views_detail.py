@@ -18,3 +18,9 @@ class DetailTest(TestCase):
         GET /inscricao/1/ must return status code 200
         """
         self.assertTrue(200, self.resp.status_code)
+
+    def test_template(self):
+        """
+        Uses template
+        """
+        self.assertTemplateUsed(self.resp, 'subscriptions/subscription_detail.html')
