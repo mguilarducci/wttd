@@ -9,8 +9,7 @@ def subscribe(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
-            s = Subscription(**form.cleaned_data)
-            s.save()
+            s = form.save()
             return HttpResponseRedirect('/inscricao/%d/' % s.pk)
         else:
             return render(request, 'subscriptions/subscription_form.html', {'form': form})
