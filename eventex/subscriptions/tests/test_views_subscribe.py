@@ -49,7 +49,7 @@ class SubscribePostTest(TestCase):
         data = dict(
             name='Matheus Guilarducci',
             cpf='01234567890',
-            email='outroemail@example.com',
+            email='email@example.com',
             phone='21-99999-8888'
         )
         self.response = self.client.post('/inscricao/', data)
@@ -65,3 +65,20 @@ class SubscribePostTest(TestCase):
         Valid POST must be saved
         """
         self.assertTrue(Subscription.objects.exists())
+
+
+class SubscribeInvalidPostTest(TestCase):
+    def setUp(self):
+        data = dict(
+            name='Matheus Guilarducci',
+            cpf='000000000012',
+            email='email@example.com',
+            phone='21-99999-8888'
+        )
+        self.response = self.client.post('/inscricao/', data)
+
+    def test_post(self):
+        """
+        Invalid POST should not redirect
+        """
+        self.assertEqual(200, self.response.status_code)
