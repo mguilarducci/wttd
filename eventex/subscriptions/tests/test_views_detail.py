@@ -37,3 +37,9 @@ class DetailTest(TestCase):
         Check if the subscription data was rendered
         """
         self.assertContains(self.resp, 'Matheus Guilarducci')
+
+
+class DetailNotFound(TestCase):
+    def test_not_found(self):
+        resp = self.client.get('/inscricao/0/')
+        self.assertEqual(404, resp.status_code)
