@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from eventex.subscriptions.forms import SubscriptionForm
 
@@ -22,3 +23,7 @@ def create(request):
 
     s = form.save()
     return HttpResponseRedirect('/inscricao/%d/' % s.pk)
+
+
+def detail(request, pk):
+    return HttpResponse()
