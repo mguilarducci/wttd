@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.test import TestCase
 from eventex.subscriptions.models import Subscription
+from datetime import datetime
 
 
 class SubscriptionTest(TestCase):
@@ -18,3 +19,10 @@ class SubscriptionTest(TestCase):
         """
         self.obj.save()
         self.assertEqual(1,self.obj.pk)
+
+    def test_has_created_at(self):
+        """
+        Subscription must have automatic created_at
+        """
+        self.obj.save()
+        self.assertIsInstance(self.obj.created_at, datetime)
