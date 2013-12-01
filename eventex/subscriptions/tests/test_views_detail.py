@@ -24,3 +24,10 @@ class DetailTest(TestCase):
         Uses template
         """
         self.assertTemplateUsed(self.resp, 'subscriptions/subscription_detail.html')
+
+    def test_context(self):
+        """
+        Context must have a subscription instance
+        """
+        s = self.resp.context['subscription']
+        self.assertIsInstance(s, Subscription)
