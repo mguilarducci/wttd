@@ -17,3 +17,13 @@ class SubscribeTest(TestCase):
         Response should be a rendered template
         """
         self.assertTemplateUsed(self.response, 'subscriptions/subscription_form.html')
+
+    def test_html(self):
+        """
+        HTML must contain input controls
+        """
+        self.assertContains(self.response, '<form')
+        self.assertContains(self.response, '<input', 5)
+        self.assertContains(self.response, 'type="text"', 3)
+        self.assertContains(self.response, 'type="email"')
+        self.assertContains(self.response, 'type="submit"')
