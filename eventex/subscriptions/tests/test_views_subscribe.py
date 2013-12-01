@@ -59,3 +59,9 @@ class SubscribePostTest(TestCase):
         Valid POST should redirect to /inscricao/1/
         """
         self.assertEqual(302, self.response.status_code)
+
+    def test_save(self):
+        """
+        Valid POST must be saved
+        """
+        self.assertTrue(Subscription.objects.exists())
