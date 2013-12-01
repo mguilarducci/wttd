@@ -23,7 +23,13 @@ class SubscribeTest(TestCase):
         HTML must contain input controls
         """
         self.assertContains(self.response, '<form')
-        self.assertContains(self.response, '<input', 5)
+        self.assertContains(self.response, '<input', 6)
         self.assertContains(self.response, 'type="text"', 3)
         self.assertContains(self.response, 'type="email"')
         self.assertContains(self.response, 'type="submit"')
+
+    def test_csrf(self):
+        """
+        HTML must contain csrf token
+        """
+        self.assertContains(self.response, 'csrfmiddlewaretoken')
