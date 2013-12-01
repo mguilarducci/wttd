@@ -41,3 +41,10 @@ class SubscribeTest(TestCase):
         """
         form = self.response.context['form']
         self.assertIsInstance(form, SubscriptionForm)
+
+    def test_form_has_fields(self):
+        """
+        Form must have 4 fields
+        """
+        form = self.response.context['form']
+        self.assertItemsEqual(['name', 'cpf', 'email', 'phone'], form.fields)
