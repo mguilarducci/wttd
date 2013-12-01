@@ -26,4 +26,5 @@ def create(request):
 
 
 def detail(request, pk):
-    return render(request, 'subscriptions/subscription_detail.html', {'subscription': Subscription()})
+    s = Subscription.objects.get(pk=pk)
+    return render(request, 'subscriptions/subscription_detail.html', {'subscription': s})

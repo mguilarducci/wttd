@@ -31,3 +31,9 @@ class DetailTest(TestCase):
         """
         s = self.resp.context['subscription']
         self.assertIsInstance(s, Subscription)
+
+    def test_html(self):
+        """
+        Check if the subscription data was rendered
+        """
+        self.assertContains(self.resp, 'Matheus Guilarducci')
